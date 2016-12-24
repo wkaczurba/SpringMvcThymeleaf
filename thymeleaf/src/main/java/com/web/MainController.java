@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
+	
+	// TODO: Add UserRepository
 
 	@RequestMapping(value="/", method=GET)
 	public String main() {
@@ -19,8 +21,16 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/register", method=POST)
-	public String processRegistration() {
-		return "redirect:/";
+	public String processRegistration(Form form) {
+		// TODO: Form validation.
+		// TODO: Add repo class, so it saves data and can be tested.
+
+		System.out.println("processRegistration called.");
+		return "redirect:/registered";
 	}
-	// TODO: mappings etc.
+	
+	@RequestMapping(value="/registered", method=GET)
+	public String registered() {
+		return "registered";
+	}
 }
