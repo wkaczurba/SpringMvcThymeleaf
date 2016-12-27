@@ -5,6 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -15,7 +17,7 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.web")
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public ViewResolver viewResolver(ITemplateEngine templateEngine) {
@@ -46,6 +48,13 @@ public class WebConfig {
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode("HTML5");
 		return templateResolver;
+	}
+	
+	// NO NEED FOR THE OVERRIDE - THE RESOURCE HANDLER IS SET BY WebMvcConfigurerAdapter
+	
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
 }

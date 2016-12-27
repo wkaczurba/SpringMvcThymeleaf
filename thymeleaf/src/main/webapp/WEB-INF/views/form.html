@@ -3,17 +3,35 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{/resources/style.css}" />
 <title>Insert title here</title>
 </head>
 <body>
 <h1>form.html</h1>
 
-<form method="POST">
-  UserName: <input type="text" name="username" /><br />
-  Password: <input type="password" name="password" /><br />
-  Confirm password: <input type="password" name="password" /><br />
-  Email: <input type="text" name="email" /><br />
-  Confirm email: <input type="text" name="email2" /><br />
+<form method="POST" th:object="${userForm}">
+   <div class="errors" th:if="${#fields.hasErrors('*')}">
+     <ul>
+       <li th:each="err : ${#fields.errors('*')}" 
+           th:text="${err}">Input is incorrect</li>
+     </ul>
+   </div>
+          
+  <label th:class="${#fields.hasErrors('username')} ? 'error'">UserName:</label> 
+  <input type="text" th:field="*{username}" th:class="${#fields.hasErrors('username')} ? 'error'" /><br />
+
+
+  <label th:class="${#fields.hasErrors('password')} ? 'error'">Password:</label>
+  <input type="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'error'" /><br />
+  
+  <label th:class="${#fields.hasErrors('password2')} ? 'error'">Confirm password:</label>
+  <input type="password" th:field="*{password2}" th:class="${#fields.hasErrors('password2')} ? 'error'" /><br />
+  
+  <label th:class="${#fields.hasErrors('email')} ? 'error'">Email</label>
+  <input type="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'error'" /><br/>
+
+  <label th:class="${#fields.hasErrors('email2')} ? 'error'">Confirm email:</label>
+  <input type="email" th:field="*{email2}" th:cass="${#fields.hasErrors('email2')} ? 'error'" /><br/>
 
   <input type="submit" name="Submit" />
 </form>
