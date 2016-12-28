@@ -12,23 +12,23 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 // Form for registration...
 public class UserForm {
 	@NotNull
-	@Size(min=5, max=16, message="The field must be have 5...16 characters")
+	@Size(min=5, max=16, message="Username field must have 5...16 characters")
 	private String username;
 
 	@NotNull
-	@Size(min=5, max=16, message="Password must be have 5...16 characters")
+	@Size(min=5, max=16, message="Password must have 5...16 characters")
 	private String password;
 	
 	@NotNull
-	@Size(min=5, max=16, message="Password must be have 5...16 characters")
+	@Size(min=5, max=16, message="Password confirmation must have 5...16 characters")
 	private String password2;
 	
 	@NotNull
-	@Size(min=5, max=32, message="Email must be have 5...32 characters")
+	@Size(min=5, max=32, message="Email must have 5...32 characters")
 	private String email;
 
 	@NotNull
-	@Size(min=5, max=32, message="Email must be have 5...32 characters")
+	@Size(min=5, max=32, message="Email confirmation must have 5...32 characters")
 	private String email2;
 	
 	// TODO Add setters for all of the stuff.

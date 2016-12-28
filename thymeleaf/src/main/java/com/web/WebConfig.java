@@ -49,9 +49,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		templateResolver.setTemplateMode("HTML5");
 		return templateResolver;
 	}
-	
-	// NO NEED FOR THE OVERRIDE - THE RESOURCE HANDLER IS SET BY WebMvcConfigurerAdapter
-	
+		
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
